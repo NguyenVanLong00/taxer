@@ -1,11 +1,21 @@
 # taxer
 
-## Project setup
+## Cài đặt package
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+### Cài đặt json-server
+```
+npm install -g json-server
+```
+
+### Chạy json server
+```
+json-server -w .\data\db.json
+```
+
+### Chạy project
 ```
 npm run serve
 ```

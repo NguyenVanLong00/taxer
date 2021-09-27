@@ -1,0 +1,150 @@
+{
+  "tax-law": [
+    {
+      "id": 1,
+      "year": 2021,
+      "selfDecrease": 11000000,
+      "dependDecrease": 4400000,
+      "BHYT": 0.015,
+      "BHXH": 0.08,
+      "BHTN": 0.01,
+      "tax_year": [
+        {
+          "icome": 960000000,
+          "percent": 0.35
+        },
+        {
+          "icome": 624000000,
+          "percent": 0.3
+        },
+        {
+          "icome": 384000000,
+          "percent": 0.25
+        },
+        {
+          "icome": 216000000,
+          "percent": 0.2
+        },
+        {
+          "icome": 120000000,
+          "percent": 0.15
+        },
+        {
+          "icome": 60000000,
+          "percent": 0.1
+        },
+        {
+          "icome": 0,
+          "percent": 0.05
+        }
+      ],
+      "tax_month": [
+        {
+          "icome": 80000000,
+          "percent": 0.35,
+          "extra": 9850000
+        },
+        {
+          "icome": 52000000,
+          "percent": 0.3,
+          "extra": 5800000
+        },
+        {
+          "icome": 32000000,
+          "percent": 0.25,
+          "extra": 3250000
+        },
+        {
+          "icome": 18000000,
+          "percent": 0.2,
+          "extra": 1650000
+        },
+        {
+          "icome": 10000000,
+          "percent": 0.15,
+          "extra": 750000
+        },
+        {
+          "icome": 5000000,
+          "percent": 0.1,
+          "extra": 250000
+        },
+        {
+          "icome": 0,
+          "percent": 0.05,
+          "extra": 0
+        }
+      ]
+    }
+  ],
+  "taxs": [
+    {
+      "id": 1,
+      "user_tax": [
+        {
+          "month": "Tháng 1",
+          "income": "40000000",
+          "tax": 4150000
+        },
+        {
+          "month": "Tháng 2",
+          "income": "40000000",
+          "tax": 4150000
+        },
+        {
+          "month": "Tháng 3",
+          "income": "40000000",
+          "tax": 4150000
+        },
+        {
+          "month": "Tháng 4",
+          "income": "40000000",
+          "tax": 4150000
+        },
+        {
+          "month": "Tháng 5",
+          "income": "40000000",
+          "tax": 4150000
+        },
+        {
+          "month": "Tháng 6",
+          "income": "40000000",
+          "tax": 4150000
+        },
+        {
+          "month": "Tháng 7",
+          "income": "40000000",
+          "tax": 4150000
+        },
+        {
+          "month": "Tháng 8",
+          "income": "40000000",
+          "tax": 4150000
+        },
+        {
+          "month": "Tháng 9",
+          "income": "40000000",
+          "tax": 4150000
+        },
+        {
+          "month": "Tháng 10",
+          "income": "40000000",
+          "tax": 4150000
+        },
+        {
+          "month": "Tháng 11",
+          "income": "40000000",
+          "tax": 4150000
+        },
+        {
+          "month": "Tháng 12",
+          "income": "40000000",
+          "tax": 4150000
+        }
+      ]
+    },
+    {
+      "id": 2
+    }
+  ]
+}

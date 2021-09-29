@@ -1,8 +1,31 @@
 <template>
   <div class="container">
-    <el-button @click="isOpenMonthForm = true" type="primary" class="top-btn">
-      Tính thuế theo tháng
-    </el-button>
+    <el-button
+      type="primary"
+      class="new-btn"
+      @click="isOpenForm = true"
+      icon="el-icon-plus"
+      circle
+    ></el-button>
+
+    <el-card class="searchbar" >
+      <el-row :gutter="16">
+        <el-col :span="21">
+          <el-input
+            placeholder="tìm theo mã tính thuế"
+            v-model="searchKey"
+            class="searchInput"
+            clearable
+          >
+          </el-input
+        ></el-col >
+        <el-col :span="3">
+          <el-button type="primary" icon="el-icon-search">
+            tìm kiếm</el-button
+          ></el-col
+        >
+      </el-row>
+    </el-card>
 
     <el-row :gutter="12">
       <el-col :span="8" v-for="(tax, index) in taxData" :key="index">
@@ -26,7 +49,7 @@
 
   <el-drawer
     title="Thuế từng tháng"
-    v-model="isOpenMonthForm"
+    v-model="isOpenForm"
     direction="ltr"
     size="50rem"
   >
@@ -88,7 +111,7 @@
           ></el-switch>
         </el-form-item>
 
-        <el-form-item v-show="taxInfo.stayed">
+        <el-form-item v-show="false">
           <el-switch
             inactive-text="Hợp đồng trên 3 tháng"
             active-text="Hợp đồng dưới 3 tháng/ không ký hợp đồng"
@@ -109,7 +132,7 @@
         </el-form-item>
 
         <el-form-item>
-          <el-button type="primary" @click="getMonthTax">Tính thuế</el-button>
+          <el-button type="primary" @click="sendTaxData">Tính thuế</el-button>
         </el-form-item>
       </el-form>
     </div>
@@ -120,7 +143,7 @@
 export default {
   data() {
     return {
-      isOpenMonthForm: false,
+      isOpenForm: false,
       taxLaw: null,
       taxInfo: {
         year: 2021,
@@ -184,6 +207,7 @@ export default {
         workLongTime: true,
       },
       taxData: [],
+      searchKey: "",
     };
   },
   mounted() {
@@ -205,6 +229,7 @@ export default {
     },
 
     async saveTaxData(data) {
+      console.log(data);
       const request = new Request("http://localhost:3000/taxs", {
         method: "POST",
         body: JSON.stringify(data),
@@ -222,22 +247,31 @@ export default {
       console.log(this.taxData);
     },
 
-    sendTaxData(){
+    sendTaxData() {
+      this.isOpenForm = false;
       const taxMonth = this.taxInfo.incomes;
       const data = {
-        thang1:taxMonth[0].income,
-        thang2:taxMonth[1].income,
-        thang3:taxMonth[2].income,
-        thang4:taxMonth[3].income,
-        thang5:taxMonth[4].income,
-        thang6:taxMonth[5].income,
-        thang7:taxMonth[6].income,
-        thang8:taxMonth[7].income,
-        thang9:taxMonth[8].income,
-        thang10:taxMonth[9].income,
-        thang11:taxMonth[10].income,
-        thang12:taxMonth[11].income 
-      }
+        thang1: taxMonth[0].income,
+        thang2: taxMonth[1].income,
+        thang3: taxMonth[2].income,
+        thang4: taxMonth[3].income,
+        thang5: taxMonth[4].income,
+        thang6: taxMonth[5].income,
+        thang7: taxMonth[6].income,
+        thang8: taxMonth[7].income,
+        thang9: taxMonth[8].income,
+        thang10: taxMonth[9].income,
+        thang11: taxMonth[10].income,
+        thang12: taxMonth[11].income,
+        thu_nhap_mien_thue: this.taxInfo.incomeWithoutTax,
+        nguoi_phu_thuoc: this.taxInfo.dependPerson,
+        tu_thien: this.taxInfo.charity,
+        BHYT: this.taxInfo.BHYT,
+        BHXH: this.taxInfo.BHXH,
+        BHTN: this.taxInfo.BHTN,
+      };
+
+      this.saveTaxData(data);
     },
 
     formatNumber(number) {
@@ -246,8 +280,6 @@ export default {
         currency: "VND",
       }).format(number);
     },
-
-
   },
 };
 </script>
@@ -287,7 +319,6 @@ input::-webkit-inner-spin-button {
 .container {
   width: 1040px;
   margin: 0 auto;
-  padding-top: 2rem;
 }
 
 a {
@@ -295,5 +326,20 @@ a {
 }
 .top-btn {
   margin-bottom: 2rem;
+}
+
+.new-btn {
+  position: fixed;
+  bottom: 3rem;
+  right: 2rem;
+  padding: 20px !important;
+  font-size: 1.5rem;
+}
+
+.searchbar {
+  margin-bottom: 2rem;
+}
+.searchInput input {
+  border: none !important;
 }
 </style>

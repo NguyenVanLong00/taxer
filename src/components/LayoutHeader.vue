@@ -29,7 +29,7 @@ export default {
 
 <style scoped>
 .page-header {
-  height: 20rem;
+  height: 15rem;
   padding-bottom: 2rem;
 }
 .page-header img {
@@ -43,11 +43,12 @@ export default {
   font-size: 1.5rem;
   text-transform: capitalize;
   position: absolute;
-  top: 3rem;
+  top: 2rem;
   left: 0;
   right: 0;
   color: #fff;
   text-align: center;
   font-weight: bold;
 }
+
 </style>

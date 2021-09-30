@@ -27,11 +27,11 @@
       </el-row>
     </el-card>
 
-    <el-row :gutter="12">
-      <el-col :span="8" v-for="(tax, index) in taxData" :key="index">
-        <router-link :to="{ name: 'TaxDetail', params: { id: tax.id } }">
+    <el-row :gutter="16">
+      <el-col :span="8" v-for="(tax, index) in searchedTaxData" :key="index">
+        <router-link class="tax-wrapper" :to="{ name: 'TaxDetail', params: { id: tax.id } }">
           <el-card shadow="hover">
-            <h3>ID tính thuế {{ tax.id }}</h3>
+            <h3>ID tính thuế {{ tax.tax_id }}</h3>
             <p>
               Tổng thu nhập: {{ formatNumber(tax.tax_sumary.total_income) }}
             </p>
@@ -218,6 +218,9 @@ export default {
     isNoData() {
       return this.taxData.length == 0;
     },
+    searchedTaxData(){
+      return this.taxData.filter(item=> item.tax_id.includes(this.searchKey));
+    }
   },
   methods: {
     async getTaxLaw(year) {
@@ -341,5 +344,8 @@ a {
 }
 .searchInput input {
   border: none !important;
+}
+.tax-wrapper .el-card{
+  margin-bottom:16px;
 }
 </style>

@@ -79,7 +79,292 @@
   ],
   "taxs": [
     {
-      "id": 1,
+      "id": 13,
+      "tax_id": "tinhlan1",
+      "user_tax": [
+        {
+          "month": "Tháng 1",
+          "income": "40000000",
+          "tax": 4150000
+        },
+        {
+          "month": "Tháng 2",
+          "income": "40000000",
+          "tax": 4150000
+        },
+        {
+          "month": "Tháng 3",
+          "income": "40000000",
+          "tax": 4150000
+        },
+        {
+          "month": "Tháng 4",
+          "income": "40000000",
+          "tax": 4150000
+        },
+        {
+          "month": "Tháng 5",
+          "income": "40000000",
+          "tax": 4150000
+        },
+        {
+          "month": "Tháng 6",
+          "income": "40000000",
+          "tax": 4150000
+        },
+        {
+          "month": "Tháng 7",
+          "income": "40000000",
+          "tax": 4150000
+        },
+        {
+          "month": "Tháng 8",
+          "income": "40000000",
+          "tax": 4150000
+        },
+        {
+          "month": "Tháng 9",
+          "income": "40000000",
+          "tax": 4150000
+        },
+        {
+          "month": "Tháng 10",
+          "income": "40000000",
+          "tax": 4150000
+        },
+        {
+          "month": "Tháng 11",
+          "income": "40000000",
+          "tax": 4150000
+        },
+        {
+          "month": "Tháng 12",
+          "income": "40000000",
+          "tax": 4150000
+        }
+      ],
+      "tax_sumary": {
+        "total_tax": 4500000,
+        "total_income": 100000000,
+        "paid": 5000000
+      }
+    },
+    {
+      "id": 154,
+      "tax_id": "tinhlan1",
+      "user_tax": [
+        {
+          "month": "Tháng 1",
+          "income": "40000000",
+          "tax": 4150000
+        },
+        {
+          "month": "Tháng 2",
+          "income": "40000000",
+          "tax": 4150000
+        },
+        {
+          "month": "Tháng 3",
+          "income": "40000000",
+          "tax": 4150000
+        },
+        {
+          "month": "Tháng 4",
+          "income": "40000000",
+          "tax": 4150000
+        },
+        {
+          "month": "Tháng 5",
+          "income": "40000000",
+          "tax": 4150000
+        },
+        {
+          "month": "Tháng 6",
+          "income": "40000000",
+          "tax": 4150000
+        },
+        {
+          "month": "Tháng 7",
+          "income": "40000000",
+          "tax": 4150000
+        },
+        {
+          "month": "Tháng 8",
+          "income": "40000000",
+          "tax": 4150000
+        },
+        {
+          "month": "Tháng 9",
+          "income": "40000000",
+          "tax": 4150000
+        },
+        {
+          "month": "Tháng 10",
+          "income": "40000000",
+          "tax": 4150000
+        },
+        {
+          "month": "Tháng 11",
+          "income": "40000000",
+          "tax": 4150000
+        },
+        {
+          "month": "Tháng 12",
+          "income": "40000000",
+          "tax": 4150000
+        }
+      ],
+      "tax_sumary": {
+        "total_tax": 4500000,
+        "total_income": 100000000,
+        "paid": 5000000
+      }
+    },
+    {
+      "id": 1876,
+      "tax_id": "tinhlan211",
+      "user_tax": [
+        {
+          "month": "Tháng 1",
+          "income": "40000000",
+          "tax": 4150000
+        },
+        {
+          "month": "Tháng 2",
+          "income": "40000000",
+          "tax": 4150000
+        },
+        {
+          "month": "Tháng 3",
+          "income": "40000000",
+          "tax": 4150000
+        },
+        {
+          "month": "Tháng 4",
+          "income": "40000000",
+          "tax": 4150000
+        },
+        {
+          "month": "Tháng 5",
+          "income": "40000000",
+          "tax": 4150000
+        },
+        {
+          "month": "Tháng 6",
+          "income": "40000000",
+          "tax": 4150000
+        },
+        {
+          "month": "Tháng 7",
+          "income": "40000000",
+          "tax": 4150000
+        },
+        {
+          "month": "Tháng 8",
+          "income": "40000000",
+          "tax": 4150000
+        },
+        {
+          "month": "Tháng 9",
+          "income": "40000000",
+          "tax": 4150000
+        },
+        {
+          "month": "Tháng 10",
+          "income": "40000000",
+          "tax": 4150000
+        },
+        {
+          "month": "Tháng 11",
+          "income": "40000000",
+          "tax": 4150000
+        },
+        {
+          "month": "Tháng 12",
+          "income": "40000000",
+          "tax": 4150000
+        }
+      ],
+      "tax_sumary": {
+        "total_tax": 4500000,
+        "total_income": 100000000,
+        "paid": 5000000
+      }
+    },
+    {
+      "id": 11234,
+      "tax_id": "tinhlan32",
+      "user_tax": [
+        {
+          "month": "Tháng 1",
+          "income": "40000000",
+          "tax": 4150000
+        },
+        {
+          "month": "Tháng 2",
+          "income": "40000000",
+          "tax": 4150000
+        },
+        {
+          "month": "Tháng 3",
+          "income": "40000000",
+          "tax": 4150000
+        },
+        {
+          "month": "Tháng 4",
+          "income": "40000000",
+          "tax": 4150000
+        },
+        {
+          "month": "Tháng 5",
+          "income": "40000000",
+          "tax": 4150000
+        },
+        {
+          "month": "Tháng 6",
+          "income": "40000000",
+          "tax": 4150000
+        },
+        {
+          "month": "Tháng 7",
+          "income": "40000000",
+          "tax": 4150000
+        },
+        {
+          "month": "Tháng 8",
+          "income": "40000000",
+          "tax": 4150000
+        },
+        {
+          "month": "Tháng 9",
+          "income": "40000000",
+          "tax": 4150000
+        },
+        {
+          "month": "Tháng 10",
+          "income": "40000000",
+          "tax": 4150000
+        },
+        {
+          "month": "Tháng 11",
+          "income": "40000000",
+          "tax": 4150000
+        },
+        {
+          "month": "Tháng 12",
+          "income": "40000000",
+          "tax": 4150000
+        }
+      ],
+      "tax_sumary": {
+        "total_tax": 4500000,
+        "total_income": 100000000,
+        "paid": 5000000
+      }
+    },
+    {
+      "id": 123,
+      "tax_id": "tinhlan123",
       "user_tax": [
         {
           "month": "Tháng 1",

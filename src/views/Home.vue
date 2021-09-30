@@ -8,7 +8,7 @@
       circle
     ></el-button>
 
-    <el-card class="searchbar" >
+    <el-card class="searchbar">
       <el-row :gutter="16">
         <el-col :span="21">
           <el-input
@@ -18,7 +18,7 @@
             clearable
           >
           </el-input
-        ></el-col >
+        ></el-col>
         <el-col :span="3">
           <el-button type="primary" icon="el-icon-search">
             tìm kiếm</el-button
@@ -29,7 +29,10 @@
 
     <el-row :gutter="16">
       <el-col :span="8" v-for="(tax, index) in searchedTaxData" :key="index">
-        <router-link class="tax-wrapper" :to="{ name: 'TaxDetail', params: { id: tax.id } }">
+        <router-link
+          class="tax-wrapper"
+          :to="{ name: 'TaxDetail', params: { id: tax.id } }"
+        >
           <el-card shadow="hover">
             <h3>ID tính thuế {{ tax.tax_id }}</h3>
             <p>
@@ -118,17 +121,37 @@
             v-model="taxInfo.workLongTime"
           ></el-switch>
         </el-form-item>
+        <el-form-item label="Thu nhập từng tháng"> </el-form-item>
 
-        <el-form-item
-          v-for="month in taxInfo.incomes"
-          :key="month"
-          :label="month.month"
-        >
-          <el-input
-            type="number"
-            placeholder="0"
-            v-model="month.income"
-          ></el-input>
+        <el-form-item v-for="(income, index) in incomes" :key="index">
+          <el-row :gutter="16">
+            <el-col :span="10">
+              <el-input
+                type="number"
+                placeholder="0"
+                v-model="income.income"
+              ></el-input>
+            </el-col>
+            <el-col :span="10">
+              <el-select-v2
+                v-model="income.months"
+                :options="months"
+                placeholder="Please select"
+                style="width: 100%"
+                multiple
+              />
+            </el-col>
+            <el-col :span="4">
+              <el-button
+                icon="el-icon-close"
+                @click="removeIcome(index)"
+                circle
+              ></el-button>
+            </el-col>
+          </el-row>
+        </el-form-item>
+        <el-form-item>
+          <el-button icon="el-icon-plus" @click="addIcome" circle></el-button>
         </el-form-item>
 
         <el-form-item>
@@ -147,56 +170,6 @@ export default {
       taxLaw: null,
       taxInfo: {
         year: 2021,
-        incomes: [
-          {
-            month: "Tháng 1",
-            income: null,
-          },
-          {
-            month: "Tháng 2",
-            income: null,
-          },
-          {
-            month: "Tháng 3",
-            income: null,
-          },
-          {
-            month: "Tháng 4",
-            income: null,
-          },
-          {
-            month: "Tháng 5",
-            income: null,
-          },
-          {
-            month: "Tháng 6",
-            income: null,
-          },
-          {
-            month: "Tháng 7",
-            income: null,
-          },
-          {
-            month: "Tháng 8",
-            income: null,
-          },
-          {
-            month: "Tháng 9",
-            income: null,
-          },
-          {
-            month: "Tháng 10",
-            income: null,
-          },
-          {
-            month: "Tháng 11",
-            income: null,
-          },
-          {
-            month: "Tháng 12",
-            income: null,
-          },
-        ],
         incomeWithoutTax: 0,
         dependPerson: 0,
         charity: 0,
@@ -206,6 +179,8 @@ export default {
         stayed: true,
         workLongTime: true,
       },
+      incomes: [{ income: null, months: [] }],
+      months: [],
       taxData: [],
       searchKey: "",
     };
@@ -213,14 +188,22 @@ export default {
   mounted() {
     this.getTaxLaw(2021);
     this.getTaxData();
+    this.months = Array.from({ length: 12 }).map((_, idx) => ({
+      value: idx,
+      label: `Tháng ${idx + 1}`,
+    }));
+
+    console.log(this.months);
   },
   computed: {
     isNoData() {
       return this.taxData.length == 0;
     },
-    searchedTaxData(){
-      return this.taxData.filter(item=> item.tax_id.includes(this.searchKey));
-    }
+    searchedTaxData() {
+      return this.taxData.filter((item) =>
+        item.tax_id.includes(this.searchKey)
+      );
+    },
   },
   methods: {
     async getTaxLaw(year) {
@@ -233,7 +216,7 @@ export default {
 
     async saveTaxData(data) {
       console.log(data);
-      const request = new Request("http://localhost:3000/taxs", {
+      const request = new Request("http://localhost:3000/test", {
         method: "POST",
         body: JSON.stringify(data),
         headers: {
@@ -250,22 +233,37 @@ export default {
       console.log(this.taxData);
     },
 
+    addIcome() {
+      this.incomes.push({ income: null, months: [] });
+    },
+    removeIcome(index) {
+      this.incomes.splice(index, 1);
+    },
+    getIncones() {
+      let monthIncome = Array(12).fill(0);
+      this.incomes.forEach((item) => {
+        item.months.forEach((month) => {
+          monthIncome[month] += parseInt(item.income);
+        });
+      });
+      return monthIncome;
+    },
     sendTaxData() {
       this.isOpenForm = false;
-      const taxMonth = this.taxInfo.incomes;
+      const taxMonth = this.getIncones();
       const data = {
-        thang1: taxMonth[0].income,
-        thang2: taxMonth[1].income,
-        thang3: taxMonth[2].income,
-        thang4: taxMonth[3].income,
-        thang5: taxMonth[4].income,
-        thang6: taxMonth[5].income,
-        thang7: taxMonth[6].income,
-        thang8: taxMonth[7].income,
-        thang9: taxMonth[8].income,
-        thang10: taxMonth[9].income,
-        thang11: taxMonth[10].income,
-        thang12: taxMonth[11].income,
+        thang1: taxMonth[0],
+        thang2: taxMonth[1],
+        thang3: taxMonth[2],
+        thang4: taxMonth[3],
+        thang5: taxMonth[4],
+        thang6: taxMonth[5],
+        thang7: taxMonth[6],
+        thang8: taxMonth[7],
+        thang9: taxMonth[8],
+        thang10: taxMonth[9],
+        thang11: taxMonth[10],
+        thang12: taxMonth[11],
         thu_nhap_mien_thue: this.taxInfo.incomeWithoutTax,
         nguoi_phu_thuoc: this.taxInfo.dependPerson,
         tu_thien: this.taxInfo.charity,
@@ -273,7 +271,7 @@ export default {
         BHXH: this.taxInfo.BHXH,
         BHTN: this.taxInfo.BHTN,
       };
-
+      
       this.saveTaxData(data);
     },
 
@@ -345,7 +343,7 @@ a {
 .searchInput input {
   border: none !important;
 }
-.tax-wrapper .el-card{
-  margin-bottom:16px;
+.tax-wrapper .el-card {
+  margin-bottom: 16px;
 }
 </style>
